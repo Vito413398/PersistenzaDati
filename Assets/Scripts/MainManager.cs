@@ -57,7 +57,11 @@ public class MainManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                MenuManager.Instance.scorePlayers = m_Points;
+                MenuManager.Instance.SaveScore();
+                //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                SceneManager.LoadScene(0);
+
             }
         }
     }
