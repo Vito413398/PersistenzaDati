@@ -17,8 +17,8 @@ public class MainManager : MonoBehaviour
     private int m_Points;
     
     private bool m_GameOver = false;
+    public Text bestScoreText;
 
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -59,11 +59,13 @@ public class MainManager : MonoBehaviour
             {
                 MenuManager.Instance.scorePlayers = m_Points;
                 MenuManager.Instance.SaveScore();
-                //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-                SceneManager.LoadScene(0);
 
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                //SceneManager.LoadScene(0);
+                bestScoreText.text = $"Best score : {MenuManager.Instance.nameBestScore} " + $" Score : {MenuManager.Instance.scoreBestScore.ToString()}";
             }
         }
+        
     }
 
     void AddPoint(int point)
@@ -76,5 +78,7 @@ public class MainManager : MonoBehaviour
     {
         m_GameOver = true;
         GameOverText.SetActive(true);
+        
+        bestScoreText.text = $"Best score : {MenuManager.Instance.nameBestScore} " + $" Score : {MenuManager.Instance.scoreBestScore.ToString()}";
     }
 }
